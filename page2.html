@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR ACADEMY | Our Legacy</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#030611;color:white;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden
+}
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:30px 18px;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at center,#102b50 0%,#030611 65%)
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;width:75vw;height:75vw;
+  max-width:500px;max-height:500px;border-radius:50%;
+  border:1px solid #42dfff55;
+  box-shadow:0 0 45px #00bfff22,inset 0 0 45px #00bfff22;
+  animation:orbit 18s linear infinite
+}
+.hero:after{width:95vw;height:95vw;max-width:620px;max-height:620px;
+  animation-duration:28s;border-style:dashed;opacity:.45}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.planet{
+  width:min(55vw,270px);aspect-ratio:1;border-radius:50%;
+  margin:20px 0;background:
+  radial-gradient(circle at 30% 28%,#c8f7ff 0%,#4aade7 8%,#14508c 32%,#07172f 68%,#020611 75%);
+  box-shadow:inset -22px -12px 35px #000b,
+  0 0 30px #2cbcff88,0 0 90px #007bff44;
+  position:relative;z-index:1
+}
+.planet:after{
+  content:"";position:absolute;inset:-8px;border-radius:50%;
+  border:2px solid #66dfff88;transform:rotate(-22deg) scaleY(.25);
+  box-shadow:0 0 18px #00cfff
+}
+.kicker{letter-spacing:5px;color:#75eaff;font-size:12px;z-index:1}
+h1{font-size:clamp(34px,8vw,64px);margin:14px 0;letter-spacing:3px;z-index:1}
+.subtitle{color:#b8c9df;max-width:500px;line-height:1.7;z-index:1}
+.tag{
+  margin-top:22px;border:1px solid #39dfff88;border-radius:30px;
+  padding:10px 17px;color:#a9f4ff;background:#07172c;
+  z-index:1;font-size:12px;letter-spacing:2px
+}
+section{padding:55px 18px;max-width:1100px;margin:auto}
+.section-title{color:#72eaff;letter-spacing:3px;font-size:12px}
+h2{font-size:clamp(25px,5vw,38px);margin:10px 0 25px}
+.gallery{display:flex;gap:16px;overflow-x:auto;padding:5px 0 20px}
+.gallery img{
+  flex:0 0 min(78vw,350px);width:min(78vw,350px);
+  height:230px;object-fit:cover;border-radius:14px;
+  border:1px solid #39dfff66;box-shadow:0 0 22px #00aaff18
+}
+.note{color:#91a8c4;font-size:13px;line-height:1.7}
+footer{text-align:center;padding:25px;color:#68829f;font-size:11px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="kicker">STAR ACADEMY PRESENTS</div>
+  <div class="planet"></div>
+  <h1>OUR LEGACY</h1>
+  <p class="subtitle">
+    Every journey leaves a mark.<br>
+    This is our story, our team, our legacy.
+  </p>
+  <div class="tag">ĐỒNG THÁP · VIỆT NAM</div>
+</header>
+
+<section>
+  <div class="section-title">01 / OUR JOURNEY</div>
+  <h2>Built by the team.</h2>
+  <p class="note">
+    Những cột mốc, kỷ niệm và thành tựu của STAR ACADEMY.
+    Vuốt ngang để xem bộ sưu tập.
+  </p>
+  <div class="gallery">
+    <img src="file_0000000082d08211a4ecfb6adbc3fb9a.png"
+         alt="STAR ACADEMY achievement 1">
+    <img src="Picsart_26-10-24_21-46-43-167.jpg"
+         alt="STAR ACADEMY achievement 2">
+    <img src="IMG_20261027_183153_925.webp"
+         alt="STAR ACADEMY achievement 3">
+  </div>
+  <p class="note">
+    Nếu ảnh chưa hiện, kiểm tra tên file ảnh trong repository phải khớp
+    chính xác với tên trong code.
+  </p>
+</section>
+
+<footer>STAR ACADEMY · OUR LEGACY</footer>
+</body>
+</html>
