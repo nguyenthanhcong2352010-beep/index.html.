@@ -97,5 +97,94 @@ footer{text-align:center;padding:25px;color:#68829f;font-size:11px;letter-spacin
 </section>
 
 <footer>STAR ACADEMY · OUR LEGACY</footer>
+  
+<section class="explore-menu">
+  <div class="menu-label">STAR ACADEMY · EXPLORE</div>
+  <h1>KHÁM PHÁ VŨ TRỤ TRI THỨC</h1>
+  <p>Chọn lĩnh vực mày muốn khám phá.</p>
+
+  <div class="menu-grid">
+    <a class="menu-card" href="page3.html">
+      <span>01 / TECHNOLOGY</span>
+      <h2>Khám phá công nghệ</h2>
+      <p>Kiến thức cơ bản và nâng cao về thế giới số.</p>
+      <b>KHÁM PHÁ ↗</b>
+    </a>
+
+    <a class="menu-card" href="page4.html">
+      <span>02 / ESPORTS</span>
+      <h2>Nghề tuyển thủ esports</h2>
+      <p>Giải đấu, kỹ năng và con đường thi đấu chuyên nghiệp.</p>
+      <b>KHÁM PHÁ ↗</b>
+    </a>
+
+    <a class="menu-card" href="page5.html">
+      <span>03 / COMMUNITY</span>
+      <h2>Góc chia sẻ</h2>
+      <p>Nơi chia sẻ kiến thức công nghệ và câu chuyện cá nhân.</p>
+      <b>KHÁM PHÁ ↗</b>
+    </a>
+  </div>
+</section>
+
+<style>
+.explore-menu{
+  width:min(1050px,88%);
+  margin:60px auto;
+  color:#f2f7ff;
+  font-family:Arial,sans-serif;
+}
+.menu-label{
+  color:#75eaff;
+  font-size:11px;
+  letter-spacing:3px;
+}
+.explore-menu h1{
+  font-size:clamp(27px,5vw,45px);
+  line-height:1.2;
+  background:linear-gradient(90deg,#fff,#75eaff,#b9a0ff);
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+.explore-menu>p{color:#a8bad0;line-height:1.8}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+  margin-top:28px;
+}
+.menu-card{
+  display:block;
+  padding:25px;
+  color:#f2f7ff;
+  text-decoration:none;
+  border:1px solid #52709280;
+  border-radius:14px;
+  background:linear-gradient(145deg,#10233bd9,#080e1bdf);
+  box-shadow:inset 0 0 25px #75eaff08;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.menu-card:hover{
+  transform:translateY(-5px);
+  border-color:#75eaff;
+  box-shadow:0 0 25px #3ecfff20;
+}
+.menu-card span{
+  color:#75eaff;
+  font-size:10px;
+  letter-spacing:2px;
+}
+.menu-card h2{font-size:20px;margin:20px 0 10px}
+.menu-card p{color:#a8bad0;font-size:13px;line-height:1.8}
+.menu-card b{
+  display:block;
+  margin-top:22px;
+  color:#75eaff;
+  font-size:11px;
+  letter-spacing:1px;
+}
+</style>
+
 </body>
 </html>
