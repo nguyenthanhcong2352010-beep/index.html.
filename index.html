@@ -792,5 +792,91 @@ document.getElementById("prevPhoto").addEventListener("click", () => {
 });
 </script>
 
+<style>
+#portalEnter{
+  position:fixed;right:18px;bottom:24px;z-index:9000;
+  padding:15px 20px;border:1px solid #63eaff;
+  border-radius:40px;background:#06162beF;color:#dffaff;
+  font-size:12px;font-weight:bold;letter-spacing:1.5px;
+  box-shadow:0 0 24px #00bfff55;cursor:pointer
+}
+#portalEnter:active{transform:scale(.96)}
+#portalTransition{
+  position:fixed;inset:0;z-index:99999;
+  display:none;align-items:center;justify-content:center;
+  overflow:hidden;background:#01030b;perspective:700px
+}
+#portalTransition.active{display:flex}
+#portalTransition .portal{
+  position:absolute;width:35vmin;height:35vmin;min-width:150px;
+  min-height:150px;border-radius:50%;
+  border:3px solid #a9f8ff;
+  box-shadow:0 0 15px #fff,0 0 45px #00bfff,
+    inset 0 0 35px #00bfff;
+  background:radial-gradient(circle,#fff 0%,#5deaff 8%,
+    #087cff44 35%,transparent 70%);
+  animation:portalRush 1.65s cubic-bezier(.2,.7,.3,1) forwards
+}
+#portalTransition .portal:before,
+#portalTransition .portal:after{
+  content:"";position:absolute;inset:-25%;
+  border:2px solid #4ceaff;border-radius:50%;
+  box-shadow:0 0 25px #00bfff;
+  animation:portalSpin .65s linear infinite
+}
+#portalTransition .portal:after{
+  inset:-48%;border-color:#fff;
+  animation-direction:reverse;animation-duration:.9s
+}
+#portalTransition .portalText{
+  position:absolute;top:calc(50% + 115px);
+  width:100%;text-align:center;color:#baf8ff;
+  font-size:11px;letter-spacing:4px;
+  animation:portalText 1.2s ease forwards
+}
+@keyframes portalSpin{to{transform:rotate(360deg)}}
+@keyframes portalRush{
+  0%{transform:translateZ(-500px) scale(.12);opacity:0}
+  25%{opacity:1}
+  100%{transform:translateZ(500px) scale(14);opacity:1}
+}
+@keyframes portalText{
+  0%{opacity:0;letter-spacing:2px}
+  25%{opacity:1}
+  100%{opacity:0;letter-spacing:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  #portalTransition .portal{animation-duration:.6s}
+}
+</style>
+
+<button id="portalEnter" type="button">
+  ✦ ENTER OUR WORLD ↗
+</button>
+
+<div id="portalTransition" aria-hidden="true">
+  <div class="portal"></div>
+  <div class="portalText">STAR ACADEMY · INITIALIZING</div>
+</div>
+
+<script>
+(function(){
+  const button=document.getElementById("portalEnter");
+  const overlay=document.getElementById("portalTransition");
+  if(!button||!overlay)return;
+
+  button.addEventListener("click",function(){
+    button.disabled=true;
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+
+    setTimeout(function(){
+      window.location.href="page2.html";
+    },1400);
+  });
+})();
+</script>
+
 </body>
 </html>
