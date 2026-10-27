@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<title>Khám Phá Công Nghệ | STAR ACADEMY</title>
+
+<style>
+:root{
+  --cyan:#75eaff;
+  --blue:#398dff;
+  --purple:#a58bff;
+  --text:#f2f7ff;
+  --muted:#a8bad0;
+  --panel:rgba(9,20,40,.78);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 12%,#142e65 0%,transparent 38%),
+    radial-gradient(ellipse at 88% 34%,#35134c 0%,transparent 35%),
+    radial-gradient(ellipse at 48% 95%,#07384a 0%,transparent 43%),
+    #02040b;
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+#space{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:17px 6%;
+  border-bottom:1px solid #75eaff35;
+  background:rgba(3,8,20,.82);
+  backdrop-filter:blur(16px);
+}
+.brand{
+  color:var(--cyan);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:2.5px;
+}
+.back{
+  color:#d2e5f5;
+  text-decoration:none;
+  font-size:12px;
+  padding:10px 13px;
+  border:1px solid #75eaff55;
+  border-radius:8px;
+  transition:.25s;
+}
+.back:hover{
+  background:#75eaff16;
+  border-color:var(--cyan);
+}
+.hero{
+  width:min(1050px,88%);
+  margin:auto;
+  padding:76px 0 42px;
+  animation:fadeUp .8s ease both;
+}
+.eyebrow{
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:4px;
+  font-weight:bold;
+}
+h1{
+  max-width:800px;
+  margin:19px 0;
+  font-size:clamp(38px,8vw,76px);
+  line-height:1.04;
+  letter-spacing:-2px;
+  background:linear-gradient(100deg,#fff 5%,#75eaff 42%,#b6a0ff 75%,#fff);
+  background-size:200% auto;
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+  animation:shine 8s linear infinite;
+}
+.hero p{
+  max-width:660px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.9;
+}
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-top:15px;
+  padding:9px 13px;
+  border:1px solid #75eaff35;
+  border-radius:30px;
+  background:#75eaff09;
+  color:#bcefff;
+  font-size:10px;
+  letter-spacing:1.5px;
+}
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#75eaff;
+  box-shadow:0 0 12px #75eaff;
+}
+main{
+  width:min(1050px,88%);
+  margin:0 auto;
+  padding-bottom:65px;
+}
+.section-label{
+  margin:22px 0 17px;
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+.level-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:25px;
+}
+.level-button{
+  padding:13px 17px;
+  color:#c8d8ec;
+  background:#091426c9;
+  border:1px solid #456080;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:bold;
+  transition:.25s;
+}
+.level-button:hover{
+  border-color:var(--cyan);
+  transform:translateY(-2px);
+}
+.level-button.active{
+  color:white;
+  border-color:var(--cyan);
+  background:linear-gradient(120deg,#123b55,#29234e);
+  box-shadow:0 0 22px #40cfff20;
+}
+.level-info{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:18px;
+  color:var(--muted);
+  font-size:12px;
+}
+.level-info strong{
+  color:#e6faff;
+  font-size:17px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.card{
+  position:relative;
+  min-width:0;
+  padding:23px 20px;
+  overflow:hidden;
+  border:1px solid #52709270;
+  border-radius:15px;
+  background:linear-gradient(145deg,rgba(17,36,60,.88),rgba(6,12,27,.91));
+  box-shadow:inset 0 0 25px #75eaff05,0 12px 35px #0002;
+  backdrop-filter:blur(12px);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  animation:fadeUp .5s ease both;
+}
+.card:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:70%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  transition:left .7s;
+}
+.card:hover:before{left:130%}
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#75eaffa0;
+  box-shadow:0 12px 40px #168bff19,0 0 18px #75eaff0b;
+}
+.card-number{
+  position:absolute;
+  right:17px;
+  top:17px;
+  color:#6d8aa5;
+  font-size:10px;
+  letter-spacing:2px;
+}
+.icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:49px;
+  height:49px;
+  border:1px solid #75eaff40;
+  border-radius:12px;
+  background:linear-gradient(135deg,#75eaff13,#a58bff12);
+  font-size:24px;
+  box-shadow:inset 0 0 20px #75eaff08;
+}
+.card h2{
+  margin:19px 0 11px;
+  font-size:18px;
+  line-height:1.4;
+}
+.card p{
+  margin:0;
+  color:#aabdd0;
+  font-size:13px;
+  line-height:1.85;
+}
+.card .tag{
+  display:block;
+  margin-top:20px;
+  padding-top:13px;
+  border-top:1px solid #45608045;
+  color:var(--cyan);
+  font-size:9px;
+  letter-spacing:1.5px;
+}
+.note{
+  margin-top:26px;
+  padding:22px;
+  border:1px solid #75eaff35;
+  border-left:3px solid var(--cyan);
+  border-radius:10px;
+  background:linear-gradient(100deg,#0b2035d9,#111025a8);
+}
+.note strong{
+  color:var(--cyan);
+  font-size:12px;
+  letter-spacing:2px;
+}
+.note p{
+  margin-bottom:0;
+  color:#b7c8da;
+  font-size:13px;
+  line-height:1.9;
+}
+footer{
+  padding:25px 15px;
+  border-top:1px solid #45608045;
+  color:#7189a4;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:2px;
+}
+[hidden]{display:none!important}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(17px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes shine{
+  to{background-position:200% center}
+}
+@media(max-width:760px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card{padding:18px 15px}
+  .card h2{font-size:16px}
+  .hero{padding-top:54px}
+}
+@media(max-width:430px){
+  .grid{grid-template-columns:1fr}
+  .card{padding:21px}
+  .brand{font-size:11px;letter-spacing:1.5px}
+  .back{font-size:11px}
+  h1{letter-spacing:-1px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none!important;
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+
+<header>
+  <div class="brand">✦ STAR ACADEMY</div>
+  <a class="back" href="page2.html">← TRANG 2</a>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">KNOWLEDGE CENTER · 001</div>
+  <h1>KHÁM PHÁ<br>CÔNG NGHỆ</h1>
+  <p>
+    Từ kiến thức nền tảng đến những công nghệ hiện đại.
+    Khám phá thế giới số, học từng bước và tự xây dựng
+    con đường công nghệ của riêng mày.
+  </p>
+  <div class="status">
+    <span class="dot"></span>
+    HỆ THỐNG KIẾN THỨC ĐÃ SẴN SÀNG
+  </div>
+</section>
+
+<main>
+  <div class="section-label">CHỌN CẤP ĐỘ KIẾN THỨC</div>
+
+  <div class="level-controls">
+    <button class="level-button active" data-level="basic"
+      onclick="showLevel('basic',this)">
+      01 / CƠ BẢN
+    </button>
+    <button class="level-button" data-level="advanced"
+      onclick="showLevel('advanced',this)">
+      02 / NÂNG CAO
+    </button>
+  </div>
+
+  <div class="level-info">
+    <strong id="level-title">Kiến thức nền tảng</strong>
+    <span id="level-count">06 CHỦ ĐỀ</span>
+  </div>
+
+  <section id="basic" class="grid">
+    <article class="card">
+      <span class="card-number">01</span>
+      <div class="icon">💻</div>
+      <h2>Phần cứng máy tính</h2>
+      <p>CPU xử lý dữ liệu; RAM lưu dữ liệu tạm thời; SSD lưu trữ lâu dài; GPU xử lý đồ họa.</p>
+      <span class="tag">HARDWARE · CƠ BẢN</span>
+    </article>
+    <article class="card">
+      <span class="card-number">02</span>
+      <div class="icon">🖥️</div>
+      <h2>Hệ điều hành</h2>
+      <p>Tìm hiểu Windows, Linux, Android và cách hệ điều hành quản lý thiết bị, ứng dụng.</p>
+      <span class="tag">OPERATING SYSTEM</span>
+    </article>
+    <article class="card">
+      <span class="card-number">03</span>
+      <div class="icon">🌐</div>
+      <h2>Internet và mạng</h2>
+      <p>Khám phá địa chỉ IP, DNS, trình duyệt, tên miền và cách thiết bị kết nối Internet.</p>
+      <span class="tag">INTERNET · NETWORK</span>
+    </article>
+    <article class="card">
+      <span class="card-number">04</span>
+      <div class="icon">🧱</div>
+      <h2>HTML và CSS</h2>
+      <p>HTML tạo cấu trúc trang web; CSS tạo màu sắc, bố cục, hiệu ứng và giao diện thích ứng.</p>
+      <span class="tag">WEB DEVELOPMENT</span>
+    </article>
+    <article class="card">
+      <span class="card-number">05</span>
+      <div class="icon">🔐</div>
+      <h2>Bảo mật tài khoản</h2>
+      <p>Sử dụng mật khẩu riêng, bật xác thực hai lớp và cảnh giác với đường dẫn lừa đảo.</p>
+      <span class="tag">DIGITAL SECURITY</span>
+    </article>
+    <article class="card">
+      <span class="card-number">06</span>
+      <div class="icon">🤖</div>
+      <h2>Trí tuệ nhân tạo</h2>
+      <p>AI hỗ trợ phân tích dữ liệu, tạo nội dung và lập trình. Luôn kiểm tra tính chính xác của kết quả.</p>
+      <span class="tag">AI · INTRODUCTION</span>
+    </article>
+  </section>
+
+  <section id="advanced" class="grid" hidden>
+    <article class="card">
+      <span class="card-number">01</span>
+      <div class="icon">⚙️</div>
+      <h2>JavaScript nâng cao</h2>
+      <p>Tìm hiểu Promise, async/await, xử lý sự kiện và cách tổ chức mã nguồn cho website.</p>
+      <span class="tag">ADVANCED PROGRAMMING</span>
+    </article>
+    <article class="card">
+      <span class="card-number">02</span>
+      <div class="icon">🔗</div>
+      <h2>API và HTTP</h2>
+      <p>Học cách ứng dụng trao đổi dữ liệu qua request, response, JSON và các mã trạng thái HTTP.</p>
+      <span class="tag">WEB SYSTEMS</span>
+    </article>
+    <article class="card">
+      <span class="card-number">03</span>
+      <div class="icon">🗄️</div>
+      <h2>Cơ sở dữ liệu</h2>
+      <p>Khám phá SQL, bảng dữ liệu, khóa chính và quan hệ giữa các bảng để quản lý thông tin.</p>
+      <span class="tag">DATABASE · SQL</span>
+    </article>
+    <article class="card">
+      <span class="card-number">04</span>
+      <div class="icon">🛰️</div>
+      <h2>Mạng máy tính</h2>
+      <p>Tìm hiểu TCP/IP, định tuyến, HTTPS, độ trễ và cách dữ liệu đi qua các mạng.</p>
+      <span class="tag">NETWORK ENGINEERING</span>
+    </article>
+    <article class="card">
+      <span class="card-number">05</span>
+      <div class="icon">🧠</div>
+      <h2>Machine Learning</h2>
+      <p>Nghiên cứu cách mô hình học từ dữ liệu để nhận diện mẫu, phân loại hoặc dự đoán.</p>
+      <span class="tag">ARTIFICIAL INTELLIGENCE</span>
+    </article>
+    <article class="card">
+      <span class="card-number">06</span>
+      <div class="icon">🛡️</div>
+      <h2>An ninh mạng</h2>
+      <p>Tìm hiểu mã hóa, phân quyền, sao lưu và kiểm thử bảo mật trong môi trường được cho phép.</p>
+      <span class="tag">CYBERSECURITY</span>
+    </article>
+  </section>
+
+  <div class="note">
+    <strong>✦ LỘ TRÌNH ĐỀ XUẤT</strong>
+    <p>
+      Máy tính cơ bản → HTML và CSS → JavaScript →
+      API và cơ sở dữ liệu → dự án thực tế.
+      Học một chủ đề, thực hành một bài nhỏ rồi mới chuyển sang chủ đề tiếp theo.
+    </p>
+  </div>
+</main>
+
+<footer>
+  STAR ACADEMY · EXPLORE THE DIGITAL UNIVERSE
+</footer>
+
+<script>
+function showLevel(level,button){
+  document.getElementById('basic').hidden=level!=='basic';
+  document.getElementById('advanced').hidden=level!=='advanced';
+
+  document.querySelectorAll('.level-button').forEach(function(item){
+    item.classList.remove('active');
+  });
+  button.classList.add('active');
+
+  document.getElementById('level-title').textContent=
+    level==='basic'?'Kiến thức nền tảng':'Kiến thức chuyên sâu';
+  document.getElementById('level-count').textContent=
+    '06 CHỦ ĐỀ';
+
+  document.getElementById(level).scrollIntoView({
+    behavior:'smooth',
+    block:'nearest'
+  });
+}
+
+/* Hiệu ứng sao chuyển động, không cần ảnh nền */
+(function(){
+  const canvas=document.getElementById('space');
+  const ctx=canvas.getContext('2d');
+  if(!ctx)return;
+
+  let stars=[];
+  let width=0,height=0;
+  const reduced=window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    width=window.innerWidth;
+    height=window.innerHeight;
+    canvas.width=width*dpr;
+    canvas.height=height*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    const count=Math.min(150,Math.floor(width*height/6500));
+    stars=Array.from({length:count},()=>({
+      x:Math.random()*width,
+      y:Math.random()*height,
+      r:Math.random()*1.4+.25,
+      speed:Math.random()*.22+.04,
+      alpha:Math.random()*.65+.2
+    }));
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,width,height);
+    for(const s of stars){
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(180,230,255,'+s.alpha+')';
+      ctx.fill();
+
+      if(!reduced){
+        s.y-=s.speed;
+        if(s.y<0){
+          s.y=height;
+          s.x=Math.random()*width;
+        }
+      }
+    }
+    if(!reduced)requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',resize);
+  resize();
+  draw();
+})();
+</script>
+</body>
+</html>
