@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<title>SỰ THẬT ESPORTS VIỆT NAM | STAR ACADEMY</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:#f2f7ff;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 10%,#152e63,transparent 40%),
+    radial-gradient(ellipse at 85% 40%,#351344,transparent 38%),
+    #02040b;
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+#space{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:5;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:16px 6%;
+  background:#030814e8;
+  border-bottom:1px solid #75eaff35;
+  backdrop-filter:blur(14px);
+}
+.brand{
+  color:#75eaff;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+.back{
+  color:#d5e7f8;
+  text-decoration:none;
+  font-size:12px;
+  padding:10px 12px;
+  border:1px solid #75eaff55;
+  border-radius:8px;
+}
+main{
+  width:min(1080px,90%);
+  margin:auto;
+  padding-bottom:55px;
+}
+.hero{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  align-items:center;
+  gap:35px;
+  padding:55px 0 45px;
+}
+.player-wrap{
+  width:100%;
+  max-width:420px;
+  margin:auto;
+}
+.player-frame{
+  padding:8px;
+  border:1px solid #75eaff70;
+  border-radius:18px;
+  background:linear-gradient(145deg,#75eaff20,#a58bff13,#07111f);
+  box-shadow:0 0 35px #3cbdff17;
+}
+.player-image{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:560px;
+  object-fit:contain;
+  border-radius:11px;
+}
+.player-caption{
+  margin-top:13px;
+  color:#8da9c4;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:2px;
+}
+.eyebrow,.section-label{
+  color:#75eaff;
+  font-size:11px;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+h1{
+  margin:20px 0;
+  font-size:clamp(36px,5.5vw,66px);
+  line-height:1.05;
+  letter-spacing:-1px;
+  background:linear-gradient(100deg,#fff,#75eaff,#b5a0ff,#fff);
+  background-size:200% auto;
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+  animation:shine 8s linear infinite;
+}
+.hero-copy p{
+  color:#a8bad0;
+  font-size:14px;
+  line-height:1.9;
+}
+.status{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 13px;
+  border:1px solid #75eaff40;
+  border-radius:30px;
+  background:#75eaff0c;
+  color:#c5f4ff;
+  font-size:10px;
+  letter-spacing:1.5px;
+}
+.section-label{margin:28px 0 17px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+.card{
+  min-width:0;
+  padding:21px 18px;
+  border:1px solid #52709270;
+  border-radius:14px;
+  background:linear-gradient(145deg,#11253de8,#070d1cf0);
+  box-shadow:inset 0 0 25px #75eaff06;
+  transition:.25s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#75eaffb0;
+}
+.icon{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border:1px solid #75eaff40;
+  border-radius:12px;
+  background:#75eaff0c;
+  font-size:23px;
+}
+.card h3{
+  margin:16px 0 9px;
+  font-size:16px;
+  line-height:1.5;
+}
+.card p{
+  color:#a8bad0;
+  font-size:13px;
+  line-height:1.85;
+  margin:0;
+}
+.tag{
+  display:block;
+  margin-top:16px;
+  padding-top:12px;
+  border-top:1px solid #45608045;
+  color:#75eaff;
+  font-size:9px;
+  letter-spacing:1.2px;
+}
+.panel{
+  margin-top:23px;
+  padding:23px;
+  border:1px solid #75eaff35;
+  border-left:3px solid #75eaff;
+  border-radius:12px;
+  background:linear-gradient(100deg,#0b2035e8,#111025d9);
+}
+.panel h2{
+  margin:8px 0 12px;
+  font-size:clamp(21px,3vw,29px);
+  line-height:1.4;
+}
+.panel p,.panel li{
+  color:#b8c9dc;
+  font-size:13px;
+  line-height:1.9;
+}
+.panel ul{padding-left:21px}
+.truth-banner{
+  margin:20px 0;
+  padding:19px;
+  border:1px solid #ffb86b50;
+  border-radius:12px;
+  background:linear-gradient(100deg,#46251455,#161323b5);
+  color:#ffe0bc;
+  font-size:13px;
+  line-height:1.9;
+}
+.notice{color:#91a8c0!important;font-size:11px!important}
+.source{color:#75eaff;overflow-wrap:anywhere}
+footer{
+  border-top:1px solid #45608045;
+  padding:25px 12px;
+  text-align:center;
+  color:#7189a4;
+  font-size:10px;
+  letter-spacing:2px;
+}
+@keyframes shine{
+  to{background-position:200% center}
+}
+@media(max-width:760px){
+  .hero{
+    grid-template-columns:1fr;
+    gap:27px;
+    padding-top:38px;
+  }
+  .player-wrap{max-width:340px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card{padding:18px 15px}
+}
+@media(max-width:440px){
+  .grid{grid-template-columns:1fr}
+  header{padding:13px 5%}
+  .brand{font-size:11px;letter-spacing:1px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none!important;
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+
+<header>
+  <div class="brand">✦ STAR ACADEMY</div>
+  <a class="back" href="page2.html">← QUAY LẠI</a>
+</header>
+
+<main>
+
+  <!-- PHẦN GIỚI THIỆU -->
+  <section class="hero">
+    <div class="player-wrap">
+      <div class="player-frame">
+        <img
+          class="player-image"
+          src="Picsart_26-10-28_11-47-36-553.png"
+          alt="Ảnh tuyển thủ esports"
+          onerror="this.hidden=true;document.getElementById('image-error').hidden=false;"
+        >
+        <div id="image-error" hidden style="padding:25px;text-align:center;color:#75eaff">
+          Không tải được ảnh.<br>
+          Hãy kiểm tra tên file trên GitHub.
+        </div>
+      </div>
+      <div class="player-caption">ESPORTS PLAYER · VIETNAM</div>
+    </div>
+
+    <div class="hero-copy">
+      <div class="eyebrow">ESPORTS CAREER · VIETNAM</div>
+      <h1>CON ĐƯỜNG<br>TUYỂN THỦ</h1>
+      <p>
+        Đằng sau những chiếc cúp, ánh đèn sân khấu và tiếng hò reo
+        là một ngành nghề cạnh tranh khốc liệt. Esports có thể mở ra
+        cơ hội, nhưng không bảo đảm tiền bạc, danh tiếng hay tương lai ổn định.
+      </p>
+      <div class="status">✦ NHÌN THẲNG VÀO SỰ THẬT</div>
+    </div>
+  </section>
+
+  <!-- KIẾN THỨC NGHỀ NGHIỆP -->
+  <div class="section-label">01 / HIỂU VỀ NGHỀ</div>
+
+  <section class="grid">
+    <article class="card">
+      <div class="icon">🎮</div>
+      <h3>Lộ trình tuyển thủ</h3>
+      <p>Rèn kỹ năng, tham gia đội nhóm, thi đấu giải cộng đồng và thử sức ở các đợt tuyển chọn. Không có lộ trình nào bảo đảm chắc chắn được ký hợp đồng.</p>
+      <span class="tag">CAREER PATH</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🎯</div>
+      <h3>Vai trò trong đội</h3>
+      <p>Tùy trò chơi, đội hình có thể có người mở giao tranh, hỗ trợ, trinh sát, bắn tỉa hoặc người đưa ra quyết định chiến thuật.</p>
+      <span class="tag">TEAM ROLES</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🧠</div>
+      <h3>Kỹ năng cần có</h3>
+      <p>Tư duy chiến thuật, giao tiếp, phối hợp, xử lý áp lực và khả năng thích nghi với meta game.</p>
+      <span class="tag">CORE SKILLS</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">📅</div>
+      <h3>Luyện tập có kế hoạch</h3>
+      <p>Kết hợp luyện kỹ năng, xem lại trận đấu, họp chiến thuật và nghỉ ngơi. Chơi lâu hơn không đồng nghĩa tiến bộ nhanh hơn.</p>
+      <span class="tag">TRAINING</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🏆</div>
+      <h3>Giải đấu và thành tích</h3>
+      <p>Giải cộng đồng, vòng loại, giải quốc nội và quốc tế có quy mô, điều kiện tham gia và mức thưởng khác nhau.</p>
+      <span class="tag">TOURNAMENTS</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🤝</div>
+      <h3>Đội tuyển và tổ chức</h3>
+      <p>Tìm hiểu hợp đồng, quyền lợi, trách nhiệm, việc sử dụng hình ảnh và cách tổ chức quản lý tuyển thủ.</p>
+      <span class="tag">TEAM MANAGEMENT</span>
+    </article>
+  </section>
+
+  <!-- THU NHẬP -->
+  <section class="panel">
+    <div class="section-label">02 / TIỀN BẠC</div>
+    <h2>Thu nhập tuyển thủ: đừng chỉ nhìn người nổi tiếng</h2>
+    <p>Thu nhập có thể đến từ lương hợp đồng, thưởng giải đấu, livestream, sáng tạo nội dung hoặc tài trợ. Nhưng các nguồn này không giống nhau ở mọi tuyển thủ.</p>
+    <ul>
+      <li>Mức đãi ngộ phụ thuộc vào trò chơi, đội tuyển, kinh nghiệm, thành tích và thỏa thuận.</li>
+      <li>Tiền thưởng không phải khoản thu nhập cố định; còn phụ thuộc thứ hạng và quy định chia thưởng.</li>
+      <li>Livestream, quảng cáo và tài trợ thường cần khán giả, hình ảnh cá nhân và hợp đồng riêng.</li>
+      <li>Đừng vay tiền hoặc chi tiêu lớn chỉ vì nghĩ rằng chắc chắn sẽ kiếm được tiền từ esports.</li>
+    </ul>
+    <p class="notice">Không thể lấy thu nhập của một ngôi sao làm mức lương đại diện cho toàn bộ tuyển thủ Việt Nam. Không có một con số chung đúng cho mọi đội và mọi tựa game.</p>
+  </section>
+
+  <!-- SỰ THẬT MẤT LÒNG -->
+  <section class="panel" id="su-that">
+    <div class="section-label">03 / THE UNFILTERED TRUTH</div>
+    <h2 style="font-size:clamp(26px,4vw,38px)">SỰ THẬT MẤT LÒNG VỀ ESPORTS VIỆT NAM</h2>
+    <p>Đằng sau chiếc cúp và những lời tung hô là một ngành nghề có tính cạnh tranh cao, nguồn thu không đồng đều và tương lai khó đoán. Giỏi chơi game không đồng nghĩa chắc chắn có sự nghiệp ổn định.</p>
+
+    <div class="truth-banner">
+      <strong>Nói thẳng:</strong> Mày có thể dành nhiều năm luyện tập nhưng vẫn không trở thành tuyển thủ chuyên nghiệp. Số vị trí có hạn, nhu cầu đội tuyển thay đổi và cơ hội không chia đều cho tất cả.
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="icon">💸</div>
+        <h3>01. Không phải ai cũng có lương cao</h3>
+        <p>Một số ngôi sao có thể kiếm tốt, nhưng tuyển thủ mới hoặc đội nhỏ có thể có mức đãi ngộ thấp hơn đáng kể. Danh xưng tuyển thủ không tự động đồng nghĩa với giàu có.</p>
+        <span class="tag">THU NHẬP CHÊNH LỆCH</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">🏆</div>
+        <h3>02. Vô địch không có nghĩa là giàu</h3>
+        <p>Giải thưởng phụ thuộc thứ hạng, quy định chia thưởng và điều kiện cụ thể. Một danh hiệu không bảo đảm thu nhập ổn định trong những năm sau.</p>
+        <span class="tag">THÀNH TÍCH KHÔNG PHẢI TÀI SẢN</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">📉</div>
+        <h3>03. Có thể bị thay thế</h3>
+        <p>Phong độ giảm, chiến thuật thay đổi hoặc đội hình mới xuất hiện đều có thể ảnh hưởng đến vị trí thi đấu. Thành tích cũ không bảo đảm suất thi đấu mãi mãi.</p>
+        <span class="tag">CẠNH TRANH LIÊN TỤC</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">🏢</div>
+        <h3>04. Tổ chức cũng có thể gặp khó</h3>
+        <p>Đội tuyển cần nguồn tiền để vận hành. Khi tài trợ hoặc doanh thu giảm, hoạt động có thể bị thu hẹp. Hãy tìm hiểu kỹ điều khoản lương và trách nhiệm trong hợp đồng.</p>
+        <span class="tag">RỦI RO TỔ CHỨC</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">⏳</div>
+        <h3>05. Tuổi nghề không có công thức</h3>
+        <p>Không có độ tuổi giải nghệ chung cho tất cả. Phong độ, sức khỏe, trò chơi, meta và cơ hội thi đấu có thể khiến mỗi sự nghiệp đi theo hướng khác nhau.</p>
+        <span class="tag">TƯƠNG LAI KHÓ ĐOÁN</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">🧭</div>
+        <h3>06. Giải nghệ là bài toán lớn</h3>
+        <p>Khi rời thi đấu, có người chuyển sang huấn luyện, sáng tạo nội dung hoặc quản lý; người khác cần học nghề mới và tìm việc. Danh tiếng trong game không bảo đảm có việc làm ngoài đời.</p>
+        <span class="tag">SAU ESPORTS</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">📱</div>
+        <h3>07. Nổi tiếng đi kèm áp lực</h3>
+        <p>Chỉ trích, tin đồn, kỳ vọng của người hâm mộ và sự soi xét trên mạng có thể ảnh hưởng đến tinh thần. Không phải tuyển thủ nào cũng dễ dàng đối mặt với áp lực đó.</p>
+        <span class="tag">ÁP LỰC CỘNG ĐỒNG</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">🛌</div>
+        <h3>08. Cày nhiều chưa chắc tiến bộ</h3>
+        <p>Tập luyện kéo dài mà thiếu kế hoạch có thể gây mệt mỏi và giảm tập trung. Phân tích lỗi, luyện đúng điểm yếu, nghỉ ngơi và giữ sức khỏe đều quan trọng.</p>
+        <span class="tag">LUYỆN TẬP CÓ CHIẾN LƯỢC</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">🎓</div>
+        <h3>09. Bỏ học để theo game là rủi ro</h3>
+        <p>Không ai có thể bảo đảm mày sẽ được tuyển. Bỏ học khi chưa có kế hoạch rõ ràng và phương án dự phòng có thể làm giảm lựa chọn nghề nghiệp sau này.</p>
+        <span class="tag">GIỮ CÁC CÁNH CỬA MỞ</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- HỢP ĐỒNG -->
+  <section class="panel">
+    <div class="section-label">04 / PROTECT YOURSELF</div>
+    <h2>Trước khi gia nhập một đội tuyển</h2>
+    <p>Đừng chỉ hỏi đội có nổi tiếng không hoặc lương bao nhiêu. Hãy tìm hiểu những điều ảnh hưởng trực tiếp đến quyền lợi của mày.</p>
+    <ul>
+      <li>Lương, ngày trả lương và điều kiện nhận thưởng.</li>
+      <li>Thời hạn hợp đồng, gia hạn và điều kiện chấm dứt.</li>
+      <li>Chi phí ăn ở, đi lại, thiết bị và khoản khấu trừ nếu có.</li>
+      <li>Quyền sử dụng hình ảnh, livestream và nội dung cá nhân.</li>
+      <li>Trách nhiệm của tuyển thủ và nghĩa vụ của tổ chức.</li>
+      <li>Giữ bản hợp đồng và nhờ người đáng tin cậy xem xét trước khi ký.</li>
+    </ul>
+    <p class="notice">Nếu chưa đủ tuổi thành niên, hãy nhờ phụ huynh hoặc người giám hộ cùng xem xét các điều khoản và quyền lợi liên quan.</p>
+  </section>
+
+  <!-- TƯƠNG LAI -->
+  <section class="panel">
+    <div class="section-label">05 / BUILD YOUR FUTURE</div>
+    <h2>Đừng để tương lai chỉ có một lựa chọn</h2>
+    <p>Khi còn theo đuổi esports, mày vẫn có thể học thêm tiếng Anh, kỹ năng giao tiếp, chỉnh sửa video, thiết kế, lập trình hoặc quản lý tài chính. Những kỹ năng này cũng hữu ích nếu sau này mày chuyển sang công việc khác.</p>
+    <ul>
+      <li>Đặt mục tiêu luyện tập và thời hạn đánh giá tiến bộ.</li>
+      <li>Giữ nhịp ngủ nghỉ, sức khỏe và việc học.</li>
+      <li>Không xem tiền thưởng tương lai là khoản tiền chắc chắn sẽ có.</li>
+      <li>Chuẩn bị phương án khác mà không cần từ bỏ đam mê ngay lập tức.</li>
+    </ul>
+  </section>
+
+  <!-- LỜI KẾT -->
+  <section class="panel">
+    <div class="section-label">06 / FINAL MESSAGE</div>
+    <h2 style="font-size:clamp(23px,4vw,35px);line-height:1.5">
+      ĐAM MÊ CÓ THỂ ĐƯA MÀY VÀO GAME.
+      <br>
+      <span style="color:#75eaff">NHƯNG ĐỪNG ĐỂ NÓ LẤY MẤT TƯƠNG LAI CỦA MÀY.</span>
+    </h2>
+    <p>Esports không phải giấc mơ viển vông. Nhưng muốn theo nghề một cách nghiêm túc, mày cần nhìn cả cơ hội lẫn rủi ro. Hãy chơi hết mình, hiểu rõ điều khoản, bảo vệ sức khỏe và xây dựng những kỹ năng có thể theo mày suốt đời.</p>
+    <p class="notice">Nội dung mang tính định hướng chung. Thu nhập và điều kiện làm việc thay đổi theo trò chơi, tổ chức, hợp đồng và thời điểm; không phải đội tuyển nào cũng gặp cùng một vấn đề.</p>
+  </section>
+
+  <!-- NGUỒN THAM KHẢO -->
+  <section class="panel">
+    <div class="section-label">07 / THAM KHẢO THÊM</div>
+    <h2>Nguồn đọc về esports Việt Nam</h2>
+    <p>Hãy đối chiếu ngày đăng, bối cảnh, tựa game và trường hợp cụ thể trước khi áp dụng thông tin.</p>
+    <ul>
+      <li><a class="source" href="https://vtv.vn/" target="_blank" rel="noopener noreferrer">VTV — Tin tức và phân tích</a></li>
+      <li><a class="source" href="https://cand.com.vn/" target="_blank" rel="noopener noreferrer">Báo Công an Nhân dân — Tin tức và thể thao điện tử</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>STAR ACADEMY · ESPORTS CAREER KNOWLEDGE</footer>
+
+<script>
+(function(){
+  const canvas=document.getElementById('space');
+  const ctx=canvas.getContext('2d');
+  if(!ctx)return;
+
+  let stars=[],w=0,h=0,frame=0;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    w=window.innerWidth;
+    h=window.innerHeight;
+    canvas.width=w*dpr;
+    canvas.height=h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    const count=Math.min(145,Math.floor(w*h/6500));
+    stars=Array.from({length:count},()=>({
+      x:Math.random()*w,
+      y:Math.random()*h,
+      r:Math.random()*1.3+.3,
+      speed:Math.random()*.2+.035,
+      alpha:Math.random()*.55+.2
+    }));
+
+    if(reduced){
+      draw();
+    }else if(!frame){
+      frame=requestAnimationFrame(draw);
+    }
+  }
+
+  function draw(){
+    frame=0;
+    ctx.clearRect(0,0,w,h);
+
+    for(const s of stars){
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(185,230,255,'+s.alpha+')';
+      ctx.fill();
+
+      if(!reduced){
+        s.y-=s.speed;
+        if(s.y<0){
+          s.y=h;
+          s.x=Math.random()*w;
+        }
+      }
+    }
+
+    if(!reduced){
+      frame=requestAnimationFrame(draw);
+    }
+  }
+
+  window.addEventListener('resize',resize);
+  resize();
+})();
+</script>
+
+</body>
+</html>
